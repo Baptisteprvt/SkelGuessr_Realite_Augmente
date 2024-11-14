@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>three_vite</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+  <div id="score">0</div>
+  <div id="container"></div>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+        "three/addons/modifiers/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/modifiers/"
+      }
+    }
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+
+  <!--
+  <script src="./jsm/libs/ammo.wasm.js"></script>
+  -->
+ <script type="module" src="./src/main.js"></script>
+</body>
