@@ -72,7 +72,7 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 
 ## Sources d'Inspiration et Ressources
 
-- **Exemples et Documentation `Three.js`** : [Three.js Documentation](https://threejs.org/docs/) et [Three.js Examples](https://threejs.org/examples/). Particulièrement l'utilisation de [Hit Test](https://threejs.org/examples/?q=xr#webxr_ar_hittest)
+- **Exemples et Documentation `Three.js`** : [Three.js Documentation](https://threejs.org/docs/) et [Three.js Examples](https://threejs.org/examples/). Particulièrement l'utilisation de [Hit Test](https://threejs.org/examples/?q=xr#webxr_ar_hittest).
 - **Modèle 3D du Squelette** : Téléchargé à partir de [Z-Anatomy](https://www.z-anatomy.com/), modifié sur Blender pour ajuster les détails et l'échelle.
 - **Animation de danse** : [Mixamo](https://www.mixamo.com/), modifiée pour l'adapter au modèle 3D.
 - **Effets Sonores** : [Zapsplat](https://www.zapsplat.com/), pour les sons d'explosion et de succès.
