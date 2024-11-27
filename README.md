@@ -1,136 +1,82 @@
-# three_vite_xr
-THREE.js + WebXR template using [Vite](https://vitejs.dev).
+# SkelGuessr AR
 
-Allows testing and modifying [official THREE.js WebXR examples](https://threejs.org/examples/?q=webxr) locally, at lightning speed.
+## Description du Projet
 
-## Batteries included
+**SkelGuessr AR** est un jeu éducatif interactif et immersif qui vise à améliorer vos connaissances sur l'anatomie osseuse humaine, maintenant intégrée en réalité augmentée (AR). Vous pouvez explorer un modèle 3D de l'anatomie humaine, placer le squelette dans votre environnement réel, et tenter de nommer correctement les os que vous séléctionnerez grâce à un système de questions à choix multiples (QCM).
 
-Pre-configured to support :
+Le jeu combine l'apprentissage de l'anatomie et des éléments d'amusement, avec des animations, des effets spéciaux et un environnement AR pour rendre l'étude de l'anatomie plus interactive.
 
-- WebXR initialization
-- glTF file loading
-- ammo.js wasm physics library
-  - which is fast, but you might consider using the excellent and simpler [Cannon-es](https://fdoganis.github.io/slides/cannon.html) instead
-- VSCode launch scripts
-- THREE.js type definitions : for IntelliSense in VS Code
-- recommended VS Code extensions
-- deployment
+## Objectifs
 
-Have a look at vite.config.js and customize it to your needs (additional libraries, file formats etc.).
+- **Éducation Interactive** : Rendre l'apprentissage de l'anatomie humaine interactif et ludique en utilisant la visualisation en réalité augmentée.
+- **Immersion AR** : Utiliser des technologies de pointe comme `Three.js`, `WebXR`, et `Cannon.js` pour intégrer des éléments de réalité augmentée et des interactions physiques avec le squelette.
 
-## Installation
+Ce projet est destiné aux étudiants, enseignants, ou toute personne intéressée par l'étude de l'anatomie de manière innovante et amusante.
 
-Install [Node.js](https://nodejs.org)
+## Fonctionnalités Principales
 
-- Clone or download repo
-- run `npm install` : fetches and install all dependencies
-- `npm run dev` : launches a server and opens your browser in `https://localhost:5173` by default
-  - Edit your code : your changes are reflected instantly!
-- `npm run build` : packages all code and resources into the `dist` folder, ready for deployment.
+- **Réalité Augmentée** : Placez le squelette directement dans votre environnement en utilisant la caméra de votre appareil, et interagissez avec les os pour répondre au QCM.
+- **Animations et Effets** : Animations spéciales pour les bonnes réponses, et effets physiques pour les réponses incorrectes, rendant chaque interaction captivante.
+- **Interaction Intuitive** : Appuyez longuement sur l'écran (3 secondes) pour placer le squelette. Cliquez sur les os pour voir apparaitre les boutons de QCM. Vous pouvez placer le display de score ou bon vous semble. Vous pouvez replacer le squelette à tout moment.
 
+## Mode d'Emploi
 
-## HTTPS
+1. **Démarrage du Jeu** :
+   - Appuyez sur le bouton **"START XR"** en bas de la page pour entrer en mode AR.
+   - Assurez-vous que le sol soit bien détecté, et utilisez un **clic long (3 secondes)** pour placer le squelette dans votre environnement.
 
-HTTPS is required to use the WebXR API
+2. **Interactions avec le Squelette** :
+   - **Cliquer sur les Os** : Lorsque vous cliquez sur un os, une question à choix multiples (QCM) s'affiche avec quatre propositions. Sélectionnez la bonne réponse parmi les choix.
+   - **Déplacer le Squelette** : Vous pouvez replacer le squelette avec un clic long à tout moment si vous souhaitez le déplacer ailleurs dans l'environnement AR.
 
+3. **Score et Feedback** :
+   - Chaque bonne réponse vous fait gagner un point, et l'os s'illumine en vert. En cas de mauvaise réponse, l'os se "brise" et disparaît avec une animation d'explosion.
+   - Le score est affiché en permanence sur une interface visible dans le monde AR, que vous pouvez déplacer par glisser-déposer.
 
-### Using Cloudflare Tunnel for free without an account or a domain (recommended)
+4. **Menu et Règles** :
+   - **Menu Accessible** : Avant de lancer le mode AR, vous pouvez accéder au menu pour voir les règles du jeu et les commandes.
+   - **Règles** : Le bouton "Règles du jeu" vous explique comment jouer, placer le squelette, et répondre aux questions.
 
-  - Install [Homebrew](https://brew.sh)
+## Installation et Lancement
 
-```bash
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+### Prérequis
+- Un navigateur prenant en charge WebXR (de préférence Chrome).
+- Une caméra fonctionnelle pour la réalité augmentée.
+- Un téléphone disposant d'un gyroscope.
 
-then follow instructions
+## Lien de Démo
 
+- Accédez à une version en ligne du jeu ici : [Démo SkelGuessr AR](https://realite-augmentee.vercel.app/)
 
-```bash
-echo >> /Users/XXX/.zprofile
+## Membres du Groupe
 
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/XXX/.zprofile
+- **Baptiste PREVOT** : Interactions QCM, physique.
+- **Todd TAVERNIER** : Export du modèle 3D, déploiement.
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
+## Répartition des Rôles
 
-  - **[Install `cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/)**
+- **Interactions QCM et Physique** : Détection des clics sur les os, création d'animations de succès et de fausses réponses, orientation des boutons, gestion des scores, etc.
+- **Interactions avec le Squelette** : Placement et orientation du squelette dans l'environnement AR, mise à jour des animations.
+- **Déploiement** : Déploiement du projet en ligne avec des outils comme Vercel.
 
-```bash
-brew install cloudflared
-```
-- run your app locally
+## Fonctionnalités Techniques
 
-```bash
-npm run dev
-```
+- **Modèles 3D** : Le modèle du squelette est chargé en utilisant `FBXLoader` de `Three.js` et est observable en AR.
+- **Animations** : Utilisation de `Three.AnimationMixer` pour déclencher des animations en fonction des réponses du joueur.
+- **Physique** : Intégration de `Cannon.js` pour gérer la physique et les interactions des os lors des mauvaises réponses.
+- **XR et AR** : Utilisation de `WebXR` et `Three.js` pour permettre la réalité augmentée, avec des contrôles intuitifs pour le placement du squelette et les interactions.
 
-- run `cloudflared` tunnel
+## Améliorations Futures
 
-```bash
-cloudflared --url http://localhost:5173/
-```
+- **Expérience Éducative Enrichie** : Ajouter des informations détaillées sur chaque os lorsque l'utilisateur clique dessus, pour rendre l'expérience plus éducative.
 
-This will create a random temporary address ending in `*.trycloudflare.com`
+## Sources d'Inspiration et Ressources
 
-You can share this address by sending a link or by generating a QR code (very useful for mobile devices and some XR headsets).
+- **Exemples et Documentation `Three.js`** : [Three.js Documentation](https://threejs.org/docs/) et [Three.js Examples](https://threejs.org/examples/). Particulièrement l'utilisation de [Hit Test](https://threejs.org/examples/?q=xr#webxr_ar_hittest)
+- **Modèle 3D du Squelette** : Téléchargé à partir de [Z-Anatomy](https://www.z-anatomy.com/), modifié sur Blender pour ajuster les détails et l'échelle.
 
-### Persistent link
+## Remerciements
 
-If you want more persistence, you should register a domain name, or connect your github account to [Cloudflare Pages](https://pages.cloudflare.com) for free.
+Merci d'avoir essayé **SkelGuessr AR** ! Nous espérons que cette application vous aidera à apprendre l'anatomie humaine de manière amusante et immersive. Si vous avez des suggestions ou des commentaires, n'hésitez pas à nous les faire parvenir.
 
-Alternatively, you could simply [use GitHub Pages to host your application persistently](https://sbcode.net/threejs/github-pages/).
-
-### Tunneling alternatives
-
-Check these tunneling alternatives such as `ngrok` or `zrok` for simple personal projects, use [tunneling solutions](https://github.com/anderspitman/awesome-tunneling) 
-
-
-### Manual HTTPS setup
-
-In order to use `https`, copy your certificates to the `.cert` folder, and change the `serve` command to:
-
-`"serve": "http-server dist -S -C .cert/cert.pem -K .cert/key.pem`
-
-## Deploying the App with GitHub Pages
-
-(original: https://github.com/meta-quest/webxr-first-steps?tab=readme-ov-file#build-and-deploy)
-
-This repository includes a ready-to-use GitHub Actions workflow located at `.github/workflows/deploy.yml`, which automates both the build and deployment to GitHub Pages. Once enabled, every time you push changes to the `main` branch, a new build will automatically be deployed.
-
-#### Steps to Enable GitHub Pages Deployment:
-
-0. **IMPORTANT: Set the `base` variable** in `vite.config.js` (default name `/three_vite_xr`) to the actual name of your repository. Your app will be deployed to https://[GITUSERNAME].github.io/[REPOSITORY_NAME] (for example https://fdoganis.github.io/three_vite_xr)
-1. **Fork this repository** to your own GitHub account.
-2. Navigate to your forked repository’s **Settings**.
-3. Scroll down to the **Pages** section.
-4. Under **Build and Deployment**, change the **Source** to **GitHub Actions**.
-
-Once this is set, GitHub Actions will handle the build and deployment process automatically. Any time you push changes to the `main` branch, the app will be built and deployed to GitHub Pages without any additional manual steps.
-
-You can monitor the status of the deployment job or manually re-run it via the **Actions** tab in your GitHub repository.
-
-### Deploying to Your Own Hosting Solution
-
-If you prefer to host the app yourself, you’ll need to manually build the app and then deploy the generated files to your hosting provider.
-
-To generate the build, run the following command:
-
-```bash
-npm run build
-```
-
-This will create a `dist` folder containing the static files for the app. You can then upload these files to your hosting platform of choice.
-
-
-# Credits
-
-- XR enhanced version of the original ```three_vite``` template : https://github.com/fdoganis/three_vite (MIT License)
-  
-- THREE.js WebXR code inspired by https://threejs.org/examples/webxr_ar_cones.html (MIT License)
-
-- Test model (red cube) from https://github.com/cx20/gltf-test/tree/master/sampleModels/Box (CC BY License)
-
-- Some very interesting features (emulator, github pages deployment) have been borrowed from https://github.com/meta-quest/webxr-first-steps  (MIT License)
-
-  - Make sure to check this excellent tutorial out! Even if it is mostly focused on VR, it is a great introduction on how to combine WebXR with THREE.js.
-  - See [Deployment Instructions](https://github.com/meta-quest/webxr-first-steps?tab=readme-ov-file#build-and-deploy)
+**Petit tip** : Cette fois ci, pas besoin de passer tous les os pour l'animation finale. Il suffit de cliquer 5 fois en 2 secondes sur votre écran pour la déclancher. Rappuyez 5 fois rapidement pour l'arreter.
