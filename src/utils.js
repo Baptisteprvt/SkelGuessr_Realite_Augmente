@@ -1,5 +1,5 @@
 import { bonesGroup } from './loader.js';
-import { bonesOrder, selectedBoneIndex } from './main.js';
+import { bonesOrder, selectedBoneIndex } from './index.js';
 import { triggerSuccessAnimation, triggerExplosionAnimation } from './animations.js';
 import * as THREE from 'three';
 
