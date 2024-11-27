@@ -3,7 +3,7 @@ import { setupXR } from './setup.js';
 import { initScene } from './setup.js';
 import { loadSkeleton } from './loader.js';
 import { setupControllers } from './controllers.js';
-import { createScoreDisplay, updateScoreDisplay } from './utils.js';
+import { createScoreDisplay } from './utils.js';
 
 /*
 Variables :
