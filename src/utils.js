@@ -33,7 +33,7 @@ export function createScoreDisplay(scene) {
     scorePlane = new THREE.Mesh(scoreGeometry, scoreMaterial);
     scorePlane.name = 'scorePlane';
     
-    scorePlane.position.set(0, 1.5, -2);
+    scorePlane.position.set(1, 2, -3);
     scene.add(scorePlane);
 }
 
