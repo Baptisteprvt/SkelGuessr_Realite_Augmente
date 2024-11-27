@@ -2,7 +2,16 @@ import * as THREE from 'three';
 import { scene } from './setup.js';
 import { getBoneBoundingBoxCenter } from './utils.js';
 import { successSound, wrongSound } from './loader.js';
+import {mixer} from './loader.js';
 
+
+/*
+Variables :
+world: Monde physique
+groundShape: Forme du sol
+groundBody: Corps du sol
+elements: Liste des éléments à supprimer
+*/
 const world = new CANNON.World();
 const groundShape = new CANNON.Plane();
 const groundBody = new CANNON.Body({ mass: 0 });
@@ -12,24 +21,23 @@ world.gravity.set(0, -2, 0);
 world.addBody(groundBody);
 let elements = [];
 
-
+//Fonction pour déclencher l'animation de succès
 export function triggerSuccessAnimation(bone) {
     if (!bone) return;
 
-    // Jouer le son de succès
     if (successSound) {
         successSound.play();
     }
 
     let startTime = performance.now();
-    const duration = 1000; // Durée d'animation en millisecondes (1 seconde)
+    const duration = 1000;
 
     const animateBone = () => {
         const elapsedTime = performance.now() - startTime;
 
         if (elapsedTime < duration) {
             const greenValue = Math.sin(elapsedTime / 100 * Math.PI * 2) * 0.5 + 0.5;
-            bone.material.color.setRGB(0, greenValue, 0); // Osciller en vert
+            bone.material.color.setRGB(0, greenValue, 0);
             bone.material.emissive.setRGB(0, greenValue, 0);
             bone.material.emissiveIntensity = 0.5;
 
@@ -42,6 +50,7 @@ export function triggerSuccessAnimation(bone) {
     bone.text = "Bonne réponse!";
 };
 
+//Fonction pour supprimer les morceaux d'os pour ne pas surcharger la scène
 const removeOldElements = () => {
     for (let i = 0; i < 10; i++) {
         const oldestElement = elements.shift();
@@ -52,6 +61,7 @@ const removeOldElements = () => {
     }
 };
 
+//Fonction pour créer un morceau d'os physique
 const createPhysicalPiece = (piece, vecSize) => {
     const pieceShape = new CANNON.Box(vecSize);
     const pieceBody = new CANNON.Body({
@@ -64,6 +74,7 @@ const createPhysicalPiece = (piece, vecSize) => {
     return pieceBody;
 };
 
+//Fonction pour déclencher l'animation d'explosion
 export function triggerExplosionAnimation(bone)
 {
     const numPieces = 10;
@@ -120,3 +131,24 @@ export function triggerExplosionAnimation(bone)
 
     animatePieces();
 };
+
+//Fonction pour déclencher l'animation de danse
+export function playAnimation(bonesGroup) {
+    if (mixer) {
+        const action = mixer.clipAction(bonesGroup.animations[0]);
+        action.play();
+    }
+    else {
+        console.error('Le mixer n\'a pas été défini.');
+    }
+}
+
+//Fonction pour arrêter l'animation de danse
+export function stopAnimation() {
+    if (mixer) {
+        mixer.stopAllAction();
+    }
+    else {
+        console.error('Le mixer n\'a pas été défini.');
+    }
+}

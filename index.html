@@ -4,14 +4,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>three_vite</title>
+  <title>SkelGuessr</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
-  <div id="score">0</div>
-  <div id="container"></div>
+  <!-- Menu du jeu -->
+  <div id="game-menu">
+    <div class="menu-container">
+      <button id="menu-toggle" class="menu-button">
+        <span class="menu-icon">☰</span>
+      </button>
+
+      <div class="menu-content">
+        <h1>Bienvenue dans le jeu AR SkelGuessr</h1>
+
+        <div class="intro-text">
+          Apprenez à connaitre et reconnaitre les os du corps humain en explorant l'environnement en réalité augmentée !
+        </div>
+
+        <button id="rules-button" class="menu-action-button">
+          Règles du jeu
+        </button>
+      </div>
+    </div>
+
+    <div id="rules-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Règles du jeu</h2>
+        <div class="rules-text">
+          <p>Pour jouer :</p>
+          <ul>
+            <li>Appuyez sur le bouton "START XR" en bas de la page.</li>
+            <li>Un cercle blanc va s'afficher et se fixer au sol. Assurez vous que le sol soit bien plat pour une meilleure détection.</li>
+            <li>Placez le squelette dans votre environnement avec un clic prolongé (3 secondes), il fera environ 1m80.</li>
+            <li>Cliquez sur les os, quatre choix vous seront proposés, choisissez le bon.</li>
+            <li>Vous pouvez replacer le squelette à tout moment avec un clic prolongé.</li>
+          </ul>
+        </div>
+        <button class="close-modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+
   <script type="importmap">
     {
       "imports": {
@@ -21,10 +57,9 @@
       }
     }
   </script>
-<script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
-
-  <!--
-  <script src="./jsm/libs/ammo.wasm.js"></script>
-  -->
- <script type="module" src="./src/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
+
+</html>

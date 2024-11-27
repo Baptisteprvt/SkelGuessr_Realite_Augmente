@@ -7,8 +7,10 @@ import {
     WebGLRenderer
 } from 'three';
 
+// Créer une scène 3D
 const scene = new Scene();
 
+// Fonction pour configurer WebXR
 export async function setupXR(renderer) {
     document.body.appendChild(XRButton.createButton(renderer, {
         requiredFeatures: ['hit-test'],
@@ -21,6 +23,7 @@ export async function setupXR(renderer) {
     });
 }
 
+// Fonction pour initialiser la scène
 export function initScene() {
 
     const aspect = window.innerWidth / window.innerHeight;
@@ -50,4 +53,4 @@ export function initScene() {
     return { scene, camera, renderer };
 }
 
-export { scene }; // Exporter la scène et le monde pour les utiliser ailleurs
+export { scene }; // Export de la scène et du monde pour les utiliser ailleurs
