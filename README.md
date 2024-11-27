@@ -46,7 +46,7 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 
 ## Lien de Démo
 
-- Accédez à une version en ligne du jeu ici : [Démo SkelGuessr AR](https://realite-augmentee.vercel.app/)
+- Accédez à une version en ligne du jeu ici : [Démo SkelGuessr AR](https://skel-guessr-realite-augmente-mea24bas7-baptisteprvts-projects.vercel.app)
 
 ## Membres du Groupe
 
