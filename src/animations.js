@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { scene } from './setup.js';
 import { getBoneBoundingBoxCenter } from './utils.js';
 import { successSound, wrongSound } from './loader.js';
-import {mixer} from './loader.js';
+import {mixer, listener} from './loader.js';
 
 
 /*
@@ -26,7 +26,15 @@ export function triggerSuccessAnimation(bone) {
     if (!bone) return;
 
     if (successSound) {
-        successSound.play();
+        if (!bone.successSound) {
+            bone.successSound = new THREE.PositionalAudio(listener);
+            bone.add(bone.successSound);
+            bone.successSound.setBuffer(successSound.buffer);
+            bone.successSound.setRefDistance(1);
+            bone.successSound.setVolume(0.5);
+        }
+    
+        bone.successSound.play();
     }
 
     let startTime = performance.now();
@@ -89,7 +97,16 @@ export function triggerExplosionAnimation(bone)
     bone.material.transparent = true;
 
     if (wrongSound) {
-        wrongSound.play();
+        // Ajouter le son d'explosion à l'os s'il n'y est pas encore
+        if (!bone.wrongSound) {
+            bone.wrongSound = new THREE.PositionalAudio(listener);
+            bone.add(bone.wrongSound);
+            bone.wrongSound.setBuffer(wrongSound.buffer);
+            bone.wrongSound.setRefDistance(1);
+            bone.wrongSound.setVolume(0.5);
+        }
+
+        bone.wrongSound.play();
     }
 
     for (let i = 0; i < numPieces; i++) {

@@ -10,8 +10,6 @@ listener: Listener pour les sons
 mixer: Mixer pour les animations
 audioLoader: Loader pour les sons
 */
-let successSound;
-let wrongSound;
 let bonesGroup;
 let listener = new THREE.AudioListener();
 let mixer;
@@ -20,12 +18,19 @@ const audioLoader = new THREE.AudioLoader();
 //Chargement du squellette
 export function loadSkeleton(scene) {
   const loader = new FBXLoader();
-  loader.load('/assets/DancingBro.fbx', (object) => {
+  loader.load('../public/assets/DancingBro.fbx', (object) => {
     if (object) {
       object.scale.set(0.13, 0.13, 0.13);
       object.position.set(0, 0, 0);
-      
+
       bonesGroup = object;
+
+      bonesGroup.traverse((child) => {
+        if (child.isMesh) {
+            child.castShadow = true;
+        }
+      });
+
       bonesGroup.children.forEach(bone => {
         bone.name = bone.name.replace(/_/g, ' ');
         let boneName = bone.name.slice(0, -1);
@@ -42,21 +47,22 @@ export function loadSkeleton(scene) {
   });
 }
 
-//Chargement des sons
-audioLoader.load('/assets/correct-6033.mp3', (buffer) => {
-    successSound = new THREE.Audio(listener);
+// Charger le son de succès
+let successSound = new THREE.PositionalAudio(listener);
+audioLoader.load('../public/assets/correct-6033.mp3', function (buffer) {
     successSound.setBuffer(buffer);
-    successSound.setLoop(false);
+    successSound.setRefDistance(1);
     successSound.setVolume(0.5);
 });
 
-audioLoader.load('/assets/wrong-47985.mp3', (buffer) => {
-    wrongSound = new THREE.Audio(listener);
+// Charger le son d'erreur
+let wrongSound = new THREE.PositionalAudio(listener);
+audioLoader.load('../public/assets/wrong-47985.mp3', function (buffer) {
     wrongSound.setBuffer(buffer);
-    wrongSound.setLoop(false);
+    wrongSound.setRefDistance(1);
     wrongSound.setVolume(0.5);
 });
 
 
 //Export des variables
-export { bonesGroup, successSound, wrongSound, mixer };
+export { bonesGroup, successSound, wrongSound, mixer, listener };

@@ -44,6 +44,7 @@ const CLICK_THRESHOLD = 5;
 const TIME_LIMIT = 2000;
 let clock = new THREE.Clock();
 let playing = false;
+let shadowFloor = false;
 
 //Fonction pour initialiser les contrôleurs
 export function setupControllers(renderer, scene) {
@@ -88,9 +89,8 @@ export function setupControllers(renderer, scene) {
     intersectedObjects.length = 0;
     raycaster.intersectObjects(scene.children, true, intersectedObjects);
 
-    if (intersectedObjects.length > 0) {
+    if (intersectedObjects.length > 0 && intersectedObjects[0].object.name !== 'shadowFloor') {
       const selectedObject = intersectedObjects[0].object;
-
       if (selectedObject.name === 'scorePlane') {
         dragging = true;
         dragObject = selectedObject;
