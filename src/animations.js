@@ -97,7 +97,6 @@ export function triggerExplosionAnimation(bone)
     bone.material.transparent = true;
 
     if (wrongSound) {
-        // Ajouter le son d'explosion à l'os s'il n'y est pas encore
         if (!bone.wrongSound) {
             bone.wrongSound = new THREE.PositionalAudio(listener);
             bone.add(bone.wrongSound);

@@ -18,7 +18,7 @@ const audioLoader = new THREE.AudioLoader();
 //Chargement du squellette
 export function loadSkeleton(scene) {
   const loader = new FBXLoader();
-  loader.load('../public/assets/DancingBro.fbx', (object) => {
+  loader.load('/assets/DancingBro.fbx', (object) => {
     if (object) {
       object.scale.set(0.13, 0.13, 0.13);
       object.position.set(0, 0, 0);
@@ -49,7 +49,7 @@ export function loadSkeleton(scene) {
 
 // Charger le son de succès
 let successSound = new THREE.PositionalAudio(listener);
-audioLoader.load('../public/assets/correct-6033.mp3', function (buffer) {
+audioLoader.load('/assets/correct-6033.mp3', function (buffer) {
     successSound.setBuffer(buffer);
     successSound.setRefDistance(1);
     successSound.setVolume(0.5);
@@ -57,7 +57,7 @@ audioLoader.load('../public/assets/correct-6033.mp3', function (buffer) {
 
 // Charger le son d'erreur
 let wrongSound = new THREE.PositionalAudio(listener);
-audioLoader.load('../public/assets/wrong-47985.mp3', function (buffer) {
+audioLoader.load('/assets/wrong-47985.mp3', function (buffer) {
     wrongSound.setBuffer(buffer);
     wrongSound.setRefDistance(1);
     wrongSound.setVolume(0.5);
