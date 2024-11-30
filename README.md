@@ -22,18 +22,19 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 ## Mode d'Emploi
 
 1. **Démarrage du Jeu** :
+   - /!\ATTENTION/!\ Il faut attendre un peu au début pour jouer. Le temps que le modèle se charge.
    - Appuyez sur le bouton **"START XR"** en bas de la page pour entrer en mode AR.
    - Assurez-vous que le sol soit bien détecté, et utilisez un **clic long (3 secondes)** pour placer le squelette dans votre environnement.
 
-2. **Interactions avec le Squelette** :
+3. **Interactions avec le Squelette** :
    - **Cliquer sur les Os** : Lorsque vous cliquez sur un os, une question à choix multiples (QCM) s'affiche avec quatre propositions. Sélectionnez la bonne réponse parmi les choix.
    - **Déplacer le Squelette** : Vous pouvez replacer le squelette avec un clic long à tout moment si vous souhaitez le déplacer ailleurs dans l'environnement AR.
 
-3. **Score et Feedback** :
+4. **Score et Feedback** :
    - Chaque bonne réponse vous fait gagner un point, et l'os s'illumine en vert. En cas de mauvaise réponse, l'os se "brise" et disparaît avec une animation d'explosion.
    - Le score est affiché en permanence sur une interface visible dans le monde AR, que vous pouvez déplacer par glisser-déposer.
 
-4. **Menu et Règles** :
+5. **Menu et Règles** :
    - **Menu Accessible** : Avant de lancer le mode AR, vous pouvez accéder au menu pour voir les règles du jeu et les commandes.
    - **Règles** : Le bouton "Règles du jeu" vous explique comment jouer, placer le squelette, et répondre aux questions.
 
