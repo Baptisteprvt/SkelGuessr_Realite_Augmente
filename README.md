@@ -53,18 +53,21 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 - **Baptiste PREVOT** : Interactions QCM, physique.
 - **Todd TAVERNIER** : Export du modèle 3D, déploiement.
 
-## Répartition des Rôles
+## Tâches
 
 - **Interactions QCM et Physique** : Détection des clics sur les os, création d'animations de succès et de fausses réponses, orientation des boutons, gestion des scores, etc.
 - **Interactions avec le Squelette** : Placement et orientation du squelette dans l'environnement AR, mise à jour des animations.
 - **Déploiement** : Déploiement du projet en ligne avec des outils comme Vercel.
+- **Autre** : Ajout du son spatialisé, de l'ombre, ... .
 
 ## Fonctionnalités Techniques
 
 - **Modèles 3D** : Le modèle du squelette est chargé en utilisant `FBXLoader` de `Three.js` et est observable en AR.
-- **Animations** : Utilisation de `Three.AnimationMixer` pour déclencher des animations en fonction des réponses du joueur.
+- **Animations et sons** : Utilisation de `Three.AnimationMixer` pour déclencher des animations en fonction des réponses du joueur. Le son est spatialisé.
 - **Physique** : Intégration de `Cannon.js` pour gérer la physique et les interactions des os lors des mauvaises réponses.
 - **XR et AR** : Utilisation de `WebXR` et `Three.js` pour permettre la réalité augmentée, avec des contrôles intuitifs pour le placement du squelette et les interactions.
+- **Drag & Drop** : L'affichage du score peut être déplacé via drag & drop.
+- **Ombre** : Projection d'une ombre pour le squelette.
 
 ## Améliorations Futures
 
