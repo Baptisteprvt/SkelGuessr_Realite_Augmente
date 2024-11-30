@@ -3,19 +3,19 @@ import * as THREE from 'three';
 
 /*
 Variables :
-wrongSound: Son d'erreur
-successSound: Son de succès
 bonesGroup: Squellette 3D
 listener: Listener pour les sons
 mixer: Mixer pour les animations
 audioLoader: Loader pour les sons
+wrongSound: Son d'erreur
+successSound: Son de succès
 */
-let wrongSound = new THREE.PositionalAudio(listener);
-let successSound = new THREE.PositionalAudio(listener);
 let bonesGroup;
 let listener = new THREE.AudioListener();
 let mixer;
 const audioLoader = new THREE.AudioLoader();
+let wrongSound = new THREE.PositionalAudio(listener);
+let successSound = new THREE.PositionalAudio(listener);
 
 //Chargement du squellette
 export function loadSkeleton(scene) {
