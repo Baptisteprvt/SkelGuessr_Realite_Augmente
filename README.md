@@ -47,6 +47,7 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 
 ## Lien de Démo
 
+- Video de présentation : [SkelGuessr](https://youtube.com/shorts/Qonl35PSKlw) (Excusez les lags, mon appareil ne permet pas une bonne fluidité.) Test réalisé sur une tablette Samsung Galaxy Tab S7 FE SM-T733.
 - Accédez à une version en ligne du jeu ici : [Démo SkelGuessr AR](https://skel-guessr-realite-augmente-mea24bas7-baptisteprvts-projects.vercel.app)
 
 ## Membres du Groupe
