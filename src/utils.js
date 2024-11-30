@@ -17,54 +17,54 @@ let score = 0;
 
 //Fonction pour créer un affichage de score
 export function createScoreDisplay(scene) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 256;
-    const context = canvas.getContext('2d');
-    context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'black';
-    context.font = 'bold 50px Arial';
-    context.fillText('Score: 0', 50, 150);
-    const texture = new THREE.CanvasTexture(canvas);
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 256;
+  const context = canvas.getContext('2d');
+  context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = 'black';
+  context.font = 'bold 50px Arial';
+  context.fillText('Score: 0', 50, 150);
+  const texture = new THREE.CanvasTexture(canvas);
 
-    const scoreMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    const scoreGeometry = new THREE.PlaneGeometry(1.5, 0.75);
-    scorePlane = new THREE.Mesh(scoreGeometry, scoreMaterial);
-    scorePlane.name = 'scorePlane';
-    
-    scorePlane.position.set(1, 2, -3);
-    scene.add(scorePlane);
+  const scoreMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+  const scoreGeometry = new THREE.PlaneGeometry(1.5, 0.75);
+  scorePlane = new THREE.Mesh(scoreGeometry, scoreMaterial);
+  scorePlane.name = 'scorePlane';
+
+  scorePlane.position.set(1, 2, -3);
+  scene.add(scorePlane);
 }
 
 //Fonction pour mettre à jour l'affichage du score
 export function updateScoreDisplay(score) {
-    if (scorePlane) {
-        const context = scorePlane.material.map.image.getContext('2d');
-        context.clearRect(0, 0, 512, 256);
-        context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        context.fillRect(0, 0, 512, 256);
-        context.fillStyle = 'black';
-        context.font = 'bold 50px Arial';
-        context.fillText(`Score: ${score}`, 50, 150);
-        scorePlane.material.map.needsUpdate = true;
-    }
+  if (scorePlane) {
+    const context = scorePlane.material.map.image.getContext('2d');
+    context.clearRect(0, 0, 512, 256);
+    context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+    context.fillRect(0, 0, 512, 256);
+    context.fillStyle = 'black';
+    context.font = 'bold 50px Arial';
+    context.fillText(`Score: ${score}`, 50, 150);
+    scorePlane.material.map.needsUpdate = true;
+  }
 }
 
 //Fonction pour mélanger la liste des os
 const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 };
 
 //Fonction pour générer l'ordre des os
 export function generateBonesOrder() {
-    bonesOrder = [...Array(bonesGroup.children.length).keys()];
-    bonesOrder = shuffleArray(bonesOrder);
-    selectedBoneIndex = 0;
+  bonesOrder = [...Array(bonesGroup.children.length).keys()];
+  bonesOrder = shuffleArray(bonesOrder);
+  selectedBoneIndex = 0;
 };
 
 //Fonction pour ajouter des boutons autour de l'os
@@ -90,7 +90,7 @@ export function addButtonsAroundBone(bone, scene) {
   const buttonMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
   const buttonGeometry = new THREE.BoxGeometry(0.25, 0.25, 0.05);
   let i = 0;
-  
+
   positions.forEach(position => {
     const buttonPosition = boneCenter.clone().add(position);
 
@@ -99,7 +99,7 @@ export function addButtonsAroundBone(bone, scene) {
     buttonMesh.position.copy(buttonPosition);
 
     buttonMesh.quaternion.copy(bonesGroup.quaternion);
-    
+
     buttonMesh.scale.set(0, 0, 0);
 
     scene.add(buttonMesh);
@@ -136,9 +136,8 @@ export function removeButtonsAndLines(scene, prevBone, currentBone) {
     line.material.dispose();
   });
   lineMeshes.length = 0;
-  
-  if(prevBone && currentBone)
-  {
+
+  if (prevBone && currentBone) {
     let bonecolor = currentBone.material.color;
     prevBone.material.color.set(bonecolor);
   }
@@ -162,7 +161,7 @@ export function getBoneBoundingBoxCenter(bone) {
 
 //Fonction pour créer une texture de texte et afficher les noms d'os sur les boutons
 function createTextTexture(text) {
-  if(!text) return;
+  if (!text) return;
   text = text.toUpperCase();
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -173,20 +172,20 @@ function createTextTexture(text) {
   context.fillStyle = 'black';
   context.font = 'bold 20px Arial';
   if (text.length > 36) {
-      context.font = 'bold 15px Arial';
-      let text1 = text.substring(0, text.lastIndexOf(' ', 20));
-      let text2 = text.substring(text.lastIndexOf(' ', 20) + 1);
-      context.fillText(text1, 10, 25);
-      context.fillText(text2, 10, 55);
+    context.font = 'bold 15px Arial';
+    let text1 = text.substring(0, text.lastIndexOf(' ', 20));
+    let text2 = text.substring(text.lastIndexOf(' ', 20) + 1);
+    context.fillText(text1, 10, 25);
+    context.fillText(text2, 10, 55);
   }
   else if (text.length > 18) {
-      let text1 = text.substring(0, text.lastIndexOf(' ', 18));
-      let text2 = text.substring(text.lastIndexOf(' ', 18) + 1);
-      context.fillText(text1, 10, 25);
-      context.fillText(text2, 10, 55);
+    let text1 = text.substring(0, text.lastIndexOf(' ', 18));
+    let text2 = text.substring(text.lastIndexOf(' ', 18) + 1);
+    context.fillText(text1, 10, 25);
+    context.fillText(text2, 10, 55);
   }
   else {
-      context.fillText(text, 10, 40);
+    context.fillText(text, 10, 40);
   }
   const texture = new THREE.CanvasTexture(canvas);
   return texture;
@@ -195,10 +194,10 @@ function createTextTexture(text) {
 //Fonction pour mettre à jour les étiquettes des boutons
 function updateButtonLabels(labels) {
   buttonMeshes.forEach((buttonMesh, index) => {
-      const textTexture = createTextTexture(labels[index]);
-      buttonMesh.material.map = textTexture;
-      buttonMesh.material.needsUpdate = true;
-      buttonMesh.name += labels[index];
+    const textTexture = createTextTexture(labels[index]);
+    buttonMesh.material.map = textTexture;
+    buttonMesh.material.needsUpdate = true;
+    buttonMesh.name += labels[index];
   });
 }
 
@@ -212,32 +211,31 @@ export function fillQCMButtons(CurrentBone) {
   otherBones = otherBones.sort(() => 0.5 - Math.random()).slice(0, 3);
 
   const otherAnswers = otherBones
-      .filter(bone => bone.geometry && bone.name !== correctAnswer && bone.name !== undefined && bone.name !== "" && bone.name !== null)
-      .map(bone => bone.name);
+    .filter(bone => bone.geometry && bone.name !== correctAnswer && bone.name !== undefined && bone.name !== "" && bone.name !== null)
+    .map(bone => bone.name);
 
   const allAnswers = [correctAnswer, ...otherAnswers].sort(() => 0.5 - Math.random());
   updateButtonLabels(allAnswers);
 };
 
 //Fonction pour vérifier la réponse de l'utilisateur
-export function checkAnswer(button, previousBone, scene)
-{
+export function checkAnswer(button, previousBone, scene) {
   if (!previousBone) return;
 
   const correctAnswer = previousBone.name;
   const userAnswer = button.name;
 
   if (userAnswer.includes(correctAnswer)) {
-      console.log('Bonne réponse!');
-      score++;
-      console.log('Score:', score);
-      triggerSuccessAnimation(previousBone);
-      removeButtonsAndLines(scene, previousBone, null);
-      updateScoreDisplay(score);
+    console.log('Bonne réponse!');
+    score++;
+    console.log('Score:', score);
+    triggerSuccessAnimation(previousBone);
+    removeButtonsAndLines(scene, previousBone, null);
+    updateScoreDisplay(score);
   } else {
-      console.log('Mauvaise réponse! La bonne réponse était:', correctAnswer);
-      console.log('Votre réponse était:', userAnswer);
-      triggerExplosionAnimation(previousBone);
-      removeButtonsAndLines(scene, previousBone, null);
+    console.log('Mauvaise réponse! La bonne réponse était:', correctAnswer);
+    console.log('Votre réponse était:', userAnswer);
+    triggerExplosionAnimation(previousBone);
+    removeButtonsAndLines(scene, previousBone, null);
   }
 };

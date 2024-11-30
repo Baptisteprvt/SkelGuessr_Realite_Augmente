@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -167,7 +168,7 @@ html, body {
   display: block;
 }
 
-#stop-button{
+#stop-button {
   background-color: #007bff;
   color: white;
   border: none;

@@ -80,8 +80,8 @@ Ce projet est destiné aux étudiants, enseignants, ou toute personne intéress�
 - **Animation de danse** : [Mixamo](https://www.mixamo.com/), modifiée pour l'adapter au modèle 3D.
 - **Effets Sonores** : [Zapsplat](https://www.zapsplat.com/), pour les sons d'explosion et de succès.
 - **Logo de page** : [Vecteezy](https://fr.vecteezy.com/png-gratuit/tete-de-mort)
+- **Détection des surfaces** : [WebXR Hit Test](https://threejs.org/examples/?q=hit%20test#webxr_ar_hittest), le code a été adapté pour notre projet, mais le code original est dans le fichier webxr_ar_hittest.html
 
-## Remerciements
 
 Merci d'avoir essayé **SkelGuessr AR** ! Nous espérons que cette application vous aidera à apprendre l'anatomie humaine de manière amusante et immersive. Si vous avez des suggestions ou des commentaires, n'hésitez pas à nous les faire parvenir.
 

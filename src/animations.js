@@ -1,8 +1,8 @@
-import * as THREE from 'three'; 
+import * as THREE from 'three';
 import { scene } from './setup.js';
 import { getBoneBoundingBoxCenter } from './utils.js';
 import { successSound, wrongSound } from './loader.js';
-import {mixer, listener} from './loader.js';
+import { mixer, listener } from './loader.js';
 
 
 /*
@@ -33,7 +33,7 @@ export function triggerSuccessAnimation(bone) {
             bone.successSound.setRefDistance(1);
             bone.successSound.setVolume(0.5);
         }
-    
+
         bone.successSound.play();
     }
 
@@ -83,8 +83,7 @@ const createPhysicalPiece = (piece, vecSize) => {
 };
 
 //Fonction pour déclencher l'animation d'explosion
-export function triggerExplosionAnimation(bone)
-{
+export function triggerExplosionAnimation(bone) {
     const numPieces = 10;
     const explosionForce = 1;
     const bonePosition = new THREE.Vector3();

@@ -1,6 +1,5 @@
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import {
-    AmbientLight,
     HemisphereLight,
     PerspectiveCamera,
     Scene,

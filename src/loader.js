@@ -3,13 +3,15 @@ import * as THREE from 'three';
 
 /*
 Variables :
-successSound: Son de succès
 wrongSound: Son d'erreur
+successSound: Son de succès
 bonesGroup: Squellette 3D
 listener: Listener pour les sons
 mixer: Mixer pour les animations
 audioLoader: Loader pour les sons
 */
+let wrongSound = new THREE.PositionalAudio(listener);
+let successSound = new THREE.PositionalAudio(listener);
 let bonesGroup;
 let listener = new THREE.AudioListener();
 let mixer;
@@ -27,7 +29,7 @@ export function loadSkeleton(scene) {
 
       bonesGroup.traverse((child) => {
         if (child.isMesh) {
-            child.castShadow = true;
+          child.castShadow = true;
         }
       });
 
@@ -48,19 +50,17 @@ export function loadSkeleton(scene) {
 }
 
 // Charger le son de succès
-let successSound = new THREE.PositionalAudio(listener);
 audioLoader.load('/assets/correct-6033.mp3', function (buffer) {
-    successSound.setBuffer(buffer);
-    successSound.setRefDistance(1);
-    successSound.setVolume(0.5);
+  successSound.setBuffer(buffer);
+  successSound.setRefDistance(1);
+  successSound.setVolume(0.5);
 });
 
 // Charger le son d'erreur
-let wrongSound = new THREE.PositionalAudio(listener);
 audioLoader.load('/assets/wrong-47985.mp3', function (buffer) {
-    wrongSound.setBuffer(buffer);
-    wrongSound.setRefDistance(1);
-    wrongSound.setVolume(0.5);
+  wrongSound.setBuffer(buffer);
+  wrongSound.setRefDistance(1);
+  wrongSound.setVolume(0.5);
 });
 
 

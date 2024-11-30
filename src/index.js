@@ -22,7 +22,7 @@ async function main() {
     const rulesButton = document.getElementById('rules-button');
     const rulesModal = document.getElementById('rules-modal');
     const closeModal = document.querySelector('.close-modal');
-  
+
     let menuVisible = true;
 
     function toggleMenu() {
@@ -71,7 +71,7 @@ async function main() {
 
   // Initialisation de la scène
   ({ scene, camera, renderer } = initScene());
-  
+
   // Charger le modèle
   loadSkeleton(scene);
 

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { bonesGroup, mixer } from './loader.js';
 import { addButtonsAroundBone, removeButtonsAndLines, fillQCMButtons, checkAnswer } from './utils.js';
-import {playAnimation, stopAnimation} from './animations.js';
+import { playAnimation, stopAnimation } from './animations.js';
 
 /*
 Variables :
@@ -41,10 +41,8 @@ let longPressActive = false;
 let clickCount = 0;
 let firstClickTime = 0;
 const CLICK_THRESHOLD = 5;
-const TIME_LIMIT = 2000;
 let clock = new THREE.Clock();
 let playing = false;
-let shadowFloor = false;
 
 //Fonction pour initialiser les contrôleurs
 export function setupControllers(renderer, scene) {
@@ -66,7 +64,7 @@ export function setupControllers(renderer, scene) {
       firstClickTime = currentTime;
     }
 
-    if (currentTime - firstClickTime <= TIME_LIMIT) {
+    if (currentTime - firstClickTime <= ANIMATION_DURATION) {
       clickCount++;
     } else {
       clickCount = 1;
@@ -220,13 +218,11 @@ export function animate(renderer, scene, camera, frame) {
 
 //Fonction pour déclencher un événement spécial (danse)
 function triggerSpecialEvent() {
-  if (!playing)
-  {
+  if (!playing) {
     playAnimation(bonesGroup);
     playing = true;
   }
-  else
-  {
+  else {
     stopAnimation();
     playing = false;
   }
